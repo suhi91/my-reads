@@ -1,8 +1,7 @@
 import React from 'react';
 
 function Book(props){
-    console.log(props);
-    const writers = props.info.authors.join(', ');
+    const writers = (props.info.authors) ? props.info.authors.join(', ') : '';
 
     return (
         <div className="book">
@@ -15,8 +14,11 @@ function Book(props){
                      }}
                 ></div>
                 <div className="book-shelf-changer">
-                    <select>
-                        <option value="none" disabled>Move to...</option>
+                    <select
+                        onChange={(event) => props.onBookMoved(props.info, event)}
+                        value={'none'}
+                    >
+                        <option value="none" disabled >Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>

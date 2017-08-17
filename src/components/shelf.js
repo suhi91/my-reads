@@ -3,7 +3,7 @@ import Book from "./book";
 
 function Shelf(props){
     const booksOfShelf = props.books.map(book =>  {
-        return <li key={book.id}><Book info={book} /></li>;
+        return <li key={book.id}><Book info={book} onBookMoved={props.onBookMoved} /></li>;
     });
 
     return (
